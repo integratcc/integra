@@ -1,0 +1,57 @@
+# ---------- geral ----------
+.DS_Store
+*.log
+*.swp
+.idea/
+*.iml
+.history
+# .vscode/ fica versionado se voces quiserem compartilhar launch configs
+
+# segredos: nunca versionar
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*.jks
+**/google-services.json
+**/GoogleService-Info.plist
+
+# ferramentas de agente (locais de cada dev)
+.claude
+.agents
+PLANO.md
+reports/
+research_notes/
+
+# ---------- app/ (Flutter) ----------
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+app/build/
+app/**/ios/Flutter/.last_build_id
+app/android/app/debug/
+app/android/app/profile/
+app/android/app/release/
+**/android/**/GeneratedPluginRegistrant.java
+app.*.symbols
+app.*.map.json
+**/doc/api/
+/coverage/
+
+# ---------- services/ (Python) ----------
+__pycache__/
+*.py[cod]
+.venv/
+services/**/.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# ---------- infra ----------
+infra/data/
+infra/traefik/acme.json
+
+# Dados do MinIO local (bucket de desenvolvimento).
+infra/data/minio/

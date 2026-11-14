@@ -1,0 +1,54 @@
+[project]
+name = "integra-services"
+version = "0.1.0"
+description = "Raiz do workspace uv dos microsserviços Integra."
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["shared", "auth", "user", "academic", "feed", "jobs"]
+
+[tool.uv.sources]
+integra-shared = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "httpx>=0.28",
+    "ruff>=0.8",
+    "pyyaml>=6.0",
+    "respx>=0.22",
+    "hypothesis>=6.100",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Migrações são escritas pelo Alembic, não por nós: lintar código gerado só
+# rende ruído e tentação de editar o que será reescrito no próximo autogenerate.
+extend-exclude = ["*/migrations/versions/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "integra_shared",
+    "auth_service",
+    "user_service",
+    "academic_service",
+    "feed_service",
+    "jobs_service",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = [
+    "shared/tests",
+    "auth/tests",
+    "user/tests",
+    "academic/tests",
+    "feed/tests",
+    "jobs/tests",
+]
